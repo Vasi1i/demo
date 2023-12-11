@@ -2,7 +2,7 @@
 For Unix systems
 * Install docker-compose: apt update && apt install docker-compose
 * Create a folder 'demo' in the root directory
-* Download the docker-compose.yml and demo.sql file into the 'demo' folder
+* Download the docker-compose.yml and demo.sql file from src/main/resources into the 'demo' folder
 * In the docker-compose.yml file change the image 'ubuntu:20.04' to a docker image for your OS
 * While in the 'demo' folder, run the command 'docker-compose up -d'
 
