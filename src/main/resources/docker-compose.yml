@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: pwd12345
+    ports:
+      - "54320:5432"
+    volumes:
+      - ./demo.sql:/docker-entrypoint-initdb.d/demo.sql
+    networks:
+      - demo_network
+
+  app:
+    image: ubuntu:20.04
+    container_name: app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./demo:/demo
+    command: >
+      /bin/bash -c "
+        apt update &&
+        apt remove default-jdk &&
+        apt install -y git maven &&
+        apt install -y openjdk-17-jdk &&
+        git clone https://github.com/Vasi1i/demo.git /demo &&
+        cd /demo &&
+        mvn clean install &&
+        java -jar target/0.0.1-SNAPSHOT.jar"
+    networks:
+      - demo_network
+
+networks:
+  demo_network:
+    driver: bridge
