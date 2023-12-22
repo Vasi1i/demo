@@ -1,3 +1,5 @@
+# Application for creating an updated copy of a local NIST (https://nvd.nist.gov/developers/products) database with an API for accessing the this database
+
 # Installation instructions
 For Unix systems
 * Install docker-compose: apt update && apt install docker-compose
